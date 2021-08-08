@@ -23,6 +23,6 @@ public class TextReader {
             e.printStackTrace();
         }
 
-        return   line;
+        return line;
     }
 }
