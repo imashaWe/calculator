@@ -1,22 +1,20 @@
 package lk.imasha.uni;
-
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-     final TextReader textReader = new TextReader("D:\\Projects\\Uni Projects\\Software Constructions\\calculator\\numbers.text");
+     final TextReader textReader = new TextReader("numbers.text");
      final Scanner scanner = new Scanner(System.in);
      double num1 = Double.parseDouble(textReader.readLine()[0]);
      double num2 = Double.parseDouble(textReader.readLine()[1]);
      boolean isRunning = true;
 
      while (isRunning) {
-         System.out.print("Enter the method that you want (add/sub/mul):");
+         System.out.print("Enter the operator(add/sub/mul):");
          final String method = scanner.nextLine();
          switch (method) {
              case "add":
-                 System.out.println( MathFunction.add(num1, num2));
+                 System.out.println(MathFunction.add(num1, num2));
                  isRunning = false;
                  break;
              case "sub":
@@ -28,7 +26,7 @@ public class Main {
                  isRunning = false;
                  break;
              default:
-                 System.out.println("Invalid Entry");
+                 System.out.println("Invalid operator");
 
          }
      }
