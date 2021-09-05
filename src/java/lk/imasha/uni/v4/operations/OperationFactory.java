@@ -14,6 +14,10 @@ public class OperationFactory {
                 operation = new SubOperator();
                 break;
 
+            case "div":
+                operation = new DivOperator();
+                break;
+
             default:
                 operation = new MulOperator();
                 break;

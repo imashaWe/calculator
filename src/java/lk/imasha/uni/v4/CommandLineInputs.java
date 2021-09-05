@@ -7,7 +7,7 @@ public class CommandLineInputs {
         this.args = args;
     }
 
-    public  String getOperator() {
+    public String getOperator() {
         if (args.length == 0) {
             System.out.println("Please provide any arguments");
             return "";
@@ -15,10 +15,10 @@ public class CommandLineInputs {
 
         String opr = args[0];
 
-        if (!(opr.equals("add") || opr.equals("sub") || opr.equals("mal"))) {
+        if (!(opr.equals("add") || opr.equals("sub") || opr.equals("mal") || opr.equals("div"))) {
             System.out.println("Please provide any valid operation");
             return "";
         }
-        return  opr;
+        return opr;
     }
 }
