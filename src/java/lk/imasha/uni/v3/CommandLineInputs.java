@@ -15,7 +15,7 @@ public class CommandLineInputs {
 
         String opr = args[0];
 
-        if (!(opr.equals("add") || opr.equals("sub") || opr.equals("mal"))) {
+        if (!(opr.equals("add") || opr.equals("sub") || opr.equals("mul"))) {
             System.out.println("Please provide any valid operation");
             return "";
         }
