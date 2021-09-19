@@ -4,6 +4,7 @@ import lk.imasha.uni.v5.input.Inputs;
 import lk.imasha.uni.v5.operations.*;
 import lk.imasha.uni.v5.repository.NumberRepository;
 import lk.imasha.uni.v5.ui.UI;
+
 import java.io.IOException;
 
 public class CalculatorApp {
@@ -25,7 +26,13 @@ public class CalculatorApp {
         String opr = inputs.getOperator();
         Double[] numbers = numberRepository.getNumbers();
         Operation operation = operationFactory.getInstance(opr);
-        final double result = operation.execute(numbers);
+        Double result = null;
+        try {
+            result = operation.execute(numbers);
+        } catch (InvalidOperationException e) {
+            ui.showMessage("Error occurred: " + e.getMessage());
+            return;
+        }
         ui.showMessage("Result is " + result);
 
     }
