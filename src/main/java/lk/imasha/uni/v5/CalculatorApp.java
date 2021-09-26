@@ -1,11 +1,11 @@
 package lk.imasha.uni.v5;
 
 import lk.imasha.uni.v5.input.Inputs;
+import lk.imasha.uni.v5.input.InvalidInputException;
 import lk.imasha.uni.v5.operations.*;
 import lk.imasha.uni.v5.repository.NumberRepository;
+import lk.imasha.uni.v5.repository.NumberRepositoryException;
 import lk.imasha.uni.v5.ui.UI;
-
-import java.io.IOException;
 
 public class CalculatorApp {
     private final Inputs inputs;
@@ -14,26 +14,24 @@ public class CalculatorApp {
     private final UI ui;
 
     public CalculatorApp(Inputs inputs, NumberRepository numberRepository, OperationFactory operationFactory, UI ui) {
-
         this.inputs = inputs;
         this.numberRepository = numberRepository;
         this.operationFactory = operationFactory;
         this.ui = ui;
     }
 
-    public void execute() throws IOException {
+    public void execute() {
 
-        String opr = inputs.getOperator();
-        Double[] numbers = numberRepository.getNumbers();
-        Operation operation = operationFactory.getInstance(opr);
-        Double result = null;
         try {
-            result = operation.execute(numbers);
-        } catch (InvalidOperationException e) {
+            String operator = inputs.getOperator();
+            Double[] numbers = numberRepository.getNumbers();
+            Operation operation = operationFactory.getInstance(operator);
+            Double result = operation.execute(numbers);
+            ui.showMessage("Result is " + result);
+        } catch (InvalidOperationException | InvalidInputException | NumberRepositoryException e) {
             ui.showMessage("Error occurred: " + e.getMessage());
-            return;
+
         }
-        ui.showMessage("Result is " + result);
 
     }
 }
